@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - book_updater@localhost" uuid="13926956-e7f9-40fc-b51e-8b04996d4afc">
+  <data-source name="MySQL - book_updater@localhost" uuid="a3ea9797-e01a-4f44-845d-2c5d17594b2b">
     <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -9,11 +9,20 @@
     <schema name="" catalog="book_updater"/>
     <table name="samlibbook" schema="" catalog="book_updater" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="fileName" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="author" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fileName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="author" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastUpdate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="lastSize" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="lastCheck" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="lastTime" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="book_updater" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="auth" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idsamlibbooks" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
   </data-source>

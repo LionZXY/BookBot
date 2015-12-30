@@ -29,8 +29,6 @@ public class SamlibBookPage {
         generateDate(page);
         generateName(page);
         generateAuthor(page);
-
-        System.out.println(samlibBook.toString());
     }
 
     void generateDate(String page[]) {
@@ -39,7 +37,7 @@ public class SamlibBookPage {
         for (String line : page) {
             wordInt = StringHelper.findWord(line, keyword, true);
             if (wordInt != -1) {
-                this.samlibBook.setSize(Integer.parseInt(line.substring(line.indexOf('.', wordInt + keyword.length() + 2) + 2, line.indexOf('k', wordInt + keyword.length() + 2 + 2))));
+                this.samlibBook.setLastSize(Integer.parseInt(line.substring(line.indexOf('.', wordInt + keyword.length() + 2) + 2, line.indexOf('k', wordInt + keyword.length() + 2 + 2))));
                 try {
                     this.samlibBook.setLastUpdate(new SimpleDateFormat("dd/MM/yyyy").parse(line.substring(wordInt + keyword.length() + 2, line.indexOf('.', wordInt + keyword.length() + 2))));
                 } catch (ParseException e) {
@@ -68,7 +66,7 @@ public class SamlibBookPage {
         for (int i = 0; i < page.length; i++) {
             wordInt = StringHelper.findWord(page[i], keyword, true);
             if (wordInt != -1) {
-                this.samlibBook.setAuthor(page[i + 1].substring(0, page[i + 1].indexOf(':', wordInt + keyword.length())));
+                this.samlibBook.setAuthor(page[i + 1].substring(0, page[i + 1].indexOf(':')));
                 return;
             }
         }
@@ -76,7 +74,7 @@ public class SamlibBookPage {
 
     String generateFileName(String url){
         String time[] = url.split("/");
-        return time[time.length-3] + "/" + time[time.length-2]+ "/" + time[time.length-1].substring(0,time[time.length-1].length() - 6);
+        return "/" + time[time.length-3] + "/" + time[time.length-2]+ "/" + time[time.length-1].substring(0,time[time.length-1].length() - 6);
 
     }
 }

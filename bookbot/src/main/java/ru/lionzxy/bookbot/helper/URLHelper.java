@@ -15,8 +15,10 @@ import java.util.List;
 public class URLHelper {
 
     public static String[] getSite(String url){
+        System.out.println("Получение файла " + url);
+
         List<String> page = new ArrayList<String>();
-        if (url.length() < 8 || !url.substring(0, 7).equalsIgnoreCase("http://") || !url.substring(0, 8).equalsIgnoreCase("https://"))
+        if (url.length() < 8 || !(url.substring(0, 7).equalsIgnoreCase("http://") || url.substring(0, 8).equalsIgnoreCase("https://")) )
             url = "http://" + url;
         URL urlObj;
         InputStream is = null;
